@@ -85,6 +85,13 @@ public final class NightVisionManager {
         }
     }
 
+    public void refreshOnlinePlayers() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            boolean enabled = getStoredStateNow(player.getUniqueId());
+            scheduleEffectUpdate(player, enabled, 0L);
+        }
+    }
+
     public void loadAndApply(Player player) {
         loadState(player.getUniqueId()).thenAccept(enabled -> scheduleEffectUpdate(player, enabled, 0L)).exceptionally(throwable -> {
             logStorageFailure("loading state for " + player.getName(), throwable);

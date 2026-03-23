@@ -22,4 +22,6 @@ messages:
   console-must-specify-player: '&cConsole must specify a player.'
   already-enabled: '&eNight Vision is already enabled.'
   already-disabled: '&eNight Vision is already disabled.'
-  usage: '&eUsage: /nightvision [on|off] [player]'
+  usage: '&eUsage: /nightvision [on|off|reload] [player]'
+  reload-success: '&aEzNightvision configuration reloaded.'
+  reload-failed: '&cFailed to reload the EzNightvision configuration. Check console for details.'

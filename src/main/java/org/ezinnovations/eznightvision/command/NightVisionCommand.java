@@ -47,6 +47,15 @@ public final class NightVisionCommand implements CommandExecutor, TabCompleter {
         }
 
         String action = args[0].toLowerCase(Locale.ROOT);
+        if (action.equals("reload")) {
+            if (args.length != 1) {
+                messageService.send(sender, "messages.usage");
+                return true;
+            }
+            handleReload(sender);
+            return true;
+        }
+
         if (!action.equals("on") && !action.equals("off")) {
             messageService.send(sender, "messages.usage");
             return true;
@@ -87,6 +96,9 @@ public final class NightVisionCommand implements CommandExecutor, TabCompleter {
         if (args.length == 1) {
             addIfMatches(completions, args[0], "on");
             addIfMatches(completions, args[0], "off");
+            if (sender.hasPermission("eznightvision.admin") || sender instanceof ConsoleCommandSender) {
+                addIfMatches(completions, args[0], "reload");
+            }
             return completions;
         }
 
@@ -99,6 +111,21 @@ public final class NightVisionCommand implements CommandExecutor, TabCompleter {
             }
         }
         return completions;
+    }
+
+    private void handleReload(CommandSender sender) {
+        if (!sender.hasPermission("eznightvision.admin") && !(sender instanceof ConsoleCommandSender)) {
+            messageService.send(sender, "messages.no-permission");
+            return;
+        }
+
+        try {
+            plugin.reloadPlugin();
+            messageService.send(sender, "messages.reload-success");
+        } catch (Exception exception) {
+            plugin.getLogger().severe("Failed to reload EzNightvision configuration: " + exception.getMessage());
+            messageService.send(sender, "messages.reload-failed");
+        }
     }
 
     private void handleToggleSelf(Player player) {
