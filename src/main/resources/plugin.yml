@@ -9,12 +9,12 @@ softdepend:
 commands:
   nightvision:
     description: Toggle night vision for yourself or another player.
-    usage: /<command> [on|off] [player]
+    usage: /<command> [on|off|reload] [player]
     aliases: [nv]
 permissions:
   eznightvision.use:
     description: Allows a player to toggle their own night vision.
     default: true
   eznightvision.admin:
-    description: Allows toggling night vision for other players.
+    description: Allows toggling night vision for other players and reloading the config.
     default: op

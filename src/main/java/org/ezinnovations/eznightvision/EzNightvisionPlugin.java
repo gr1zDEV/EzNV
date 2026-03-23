@@ -59,6 +59,13 @@ public final class EzNightvisionPlugin extends JavaPlugin {
         return getConfig().getBoolean("debug", false);
     }
 
+    public void reloadPlugin() {
+        reloadConfig();
+        if (nightVisionManager != null) {
+            nightVisionManager.refreshOnlinePlayers();
+        }
+    }
+
     public void debug(String message) {
         if (isDebugEnabled()) {
             getLogger().info("[Debug] " + message);

@@ -24,7 +24,7 @@ EzNightvision is a lightweight Paper/Folia plugin that lets players toggle perma
 3. Optional: install PlaceholderAPI if you want placeholder support.
 4. Start or restart the server.
 5. Edit `plugins/EzNightvision/config.yml` if you want to customize messages, storage, or effect settings.
-6. Reloading the plugin is not documented by this project, so a full restart is the safest way to apply config changes.
+6. Run `/nightvision reload` after changing `config.yml` to reload messages and effect settings without restarting the server.
 
 ## Build from source
 
@@ -43,6 +43,7 @@ The shaded plugin jar will be produced in `target/`.
 | `/nightvision off` | Force-disable your own Night Vision. | `eznightvision.use` |
 | `/nightvision on <player>` | Enable Night Vision for another online player. | `eznightvision.admin` |
 | `/nightvision off <player>` | Disable Night Vision for another online player. | `eznightvision.admin` |
+| `/nightvision reload` | Reload `config.yml` messages and effect settings without restarting. | `eznightvision.admin` |
 | `/nv` | Alias for `/nightvision`. | Same as above |
 
 ### Command notes
@@ -56,7 +57,7 @@ The shaded plugin jar will be produced in `target/`.
 | Permission | Default | Description |
 | --- | --- | --- |
 | `eznightvision.use` | `true` | Allows a player to toggle their own Night Vision. |
-| `eznightvision.admin` | `op` | Allows toggling Night Vision for other players. |
+| `eznightvision.admin` | `op` | Allows toggling Night Vision for other players and reloading the plugin config. |
 
 ## PlaceholderAPI placeholders
 
@@ -156,7 +157,9 @@ messages:
   console-must-specify-player: '&cConsole must specify a player.'
   already-enabled: '&eNight Vision is already enabled.'
   already-disabled: '&eNight Vision is already disabled.'
-  usage: '&eUsage: /nightvision [on|off] [player]'
+  usage: '&eUsage: /nightvision [on|off|reload] [player]'
+  reload-success: '&aEzNightvision configuration reloaded.'
+  reload-failed: '&cFailed to reload the EzNightvision configuration. Check console for details.'
 ```
 
 #### Message placeholders
