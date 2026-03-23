@@ -1,0 +1,20 @@
+name: EzNightvision
+author: EzInnovations
+main: org.ezinnovations.eznightvision.EzNightvisionPlugin
+version: 1.0.0
+api-version: '1.20'
+folia-supported: true
+softdepend:
+  - PlaceholderAPI
+commands:
+  nightvision:
+    description: Toggle night vision for yourself or another player.
+    usage: /<command> [on|off] [player]
+    aliases: [nv]
+permissions:
+  eznightvision.use:
+    description: Allows a player to toggle their own night vision.
+    default: true
+  eznightvision.admin:
+    description: Allows toggling night vision for other players.
+    default: op

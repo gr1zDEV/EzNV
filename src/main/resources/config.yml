@@ -1,0 +1,25 @@
+debug: false
+storage:
+  file: data/eznightvision.db
+effect:
+  ambient: false
+  particles: false
+  icon: false
+  reapply-delay-ticks: 2
+placeholders:
+  enabled-format: '&aON'
+  disabled-format: '&cOFF'
+messages:
+  prefix: '&8[&bEzNightvision&8] &r'
+  enabled-self: '&aNight Vision enabled.'
+  disabled-self: '&cNight Vision disabled.'
+  enabled-other: '&aEnabled Night Vision for &f%player%&a.'
+  disabled-other: '&cDisabled Night Vision for &f%player%&c.'
+  target-enabled: '&aNight Vision has been enabled by staff.'
+  target-disabled: '&cNight Vision has been disabled by staff.'
+  no-permission: '&cYou do not have permission to do that.'
+  player-not-found: '&cPlayer not found.'
+  console-must-specify-player: '&cConsole must specify a player.'
+  already-enabled: '&eNight Vision is already enabled.'
+  already-disabled: '&eNight Vision is already disabled.'
+  usage: '&eUsage: /nightvision [on|off] [player]'
