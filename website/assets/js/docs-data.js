@@ -102,9 +102,18 @@ window.DOCS_DATA = {
             <li>Stop your server.</li>
             <li>Place the jar in <span class="inline-code">/plugins/</span>.</li>
             <li>Start the server once to generate <span class="inline-code">/plugins/EzNightvision/config.yml</span>.</li>
-            <li>Review and adjust keys such as <span class="inline-code">storage.file</span>, <span class="inline-code">effect.ambient</span>, <span class="inline-code">effect.particles</span>, <span class="inline-code">effect.icon</span>, <span class="inline-code">effect.reapply-delay-ticks</span>, and <span class="inline-code">messages.*</span>.</li>
-            <li>Join the server and run <span class="inline-code">/nightvision</span> to verify command and effect behavior.</li>
+            <li>Review and adjust the primary config keys:</li>
+          <li>Join the server and run <span class="inline-code">/nightvision</span> to verify command and effect behavior.</li>
           </ol>
+          <div class="code-block">
+            <div class="code-head">config.yml keys</div>
+            <pre><code>storage.file
+effect.ambient
+effect.particles
+effect.icon
+effect.reapply-delay-ticks
+messages.*</code></pre>
+          </div>
           <p><strong>Warning:</strong> Do not use Bukkit <span class="inline-code">/reload</span> for plugin installation or jar upgrades. Use a full restart.</p>
           <p><strong>Tip:</strong> Use <span class="inline-code">/nightvision reload</span> after editing <span class="inline-code">config.yml</span> message/effect keys to apply changes without replacing the jar.</p>
         </section>
@@ -289,6 +298,15 @@ window.DOCS_DATA = {
         </section>
 
         <section id="config-keys"><h2>Exact Config Keys</h2>
+          <div class="code-block">
+            <div class="code-head">config.yml keys</div>
+            <pre><code>storage.file
+effect.ambient
+effect.particles
+effect.icon
+effect.reapply-delay-ticks
+debug</code></pre>
+          </div>
           <div class="table-wrap"><table>
             <thead><tr><th>Key</th><th>Type</th><th>Effect</th></tr></thead>
             <tbody>
