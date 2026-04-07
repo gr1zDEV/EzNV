@@ -9,7 +9,7 @@ window.DOCS_DATA = {
     {
       title: 'Getting Started',
       pages: [
-        { id: 'installation', label: 'Installation' }
+        { id: 'configuration', label: 'Configuration' }
       ]
     },
     {
@@ -17,19 +17,13 @@ window.DOCS_DATA = {
       pages: [
         { id: 'commands', label: 'Commands' },
         { id: 'permissions', label: 'Permissions' },
-        { id: 'troubleshooting', label: 'Troubleshooting' }
-      ]
-    },
-    {
-      title: 'Features',
-      pages: [
-        { id: 'persistent-night-vision', label: 'Persistent Night Vision' },
         { id: 'placeholderapi-integration', label: 'PlaceholderAPI Integration' }
       ]
     },
     {
       title: 'More',
       pages: [
+        { id: 'troubleshooting', label: 'Troubleshooting' },
         { id: 'faq', label: 'FAQ' },
         { id: 'changelog', label: 'Changelog' }
       ]
@@ -80,42 +74,66 @@ window.DOCS_DATA = {
       `
     },
 
-    installation: {
-      title: 'Installation · EzNightvision Docs',
-      topbarTitle: 'Installation',
+    configuration: {
+      title: 'Configuration · EzNightvision Docs',
+      topbarTitle: 'Configuration',
       meta: ['Getting Started', 'Setup'],
       content: `
-        <h1>Installation</h1>
+        <h1>Configuration</h1>
 
-        <section id="requirements"><h2>Requirements</h2>
-          <ul>
-            <li>Java 21 or newer</li>
-            <li>Paper or Folia server on Minecraft 1.20+</li>
-            <li>Access to the server <span class="inline-code">/plugins/</span> directory</li>
-            <li>Optional: PlaceholderAPI if you plan to use <span class="inline-code">%eznightvision_*%</span> placeholders</li>
-          </ul>
+        <section id="core-behavior"><h2>Core Behavior</h2>
+          <p>EzNightvision stores each player's toggle state and reapplies Night Vision when stored state is enabled.</p>
+          <p>Reapply triggers include player join, respawn, milk effect clear, totem-use resurrection, and Night Vision removal from gameplay/plugin events.</p>
         </section>
 
-        <section id="steps"><h2>Steps</h2>
-          <ol>
-            <li>Download the EzNightvision <span class="inline-code">.jar</span> release (or build with <span class="inline-code">mvn package</span>).</li>
-            <li>Stop your server.</li>
-            <li>Place the jar in <span class="inline-code">/plugins/</span>.</li>
-            <li>Start the server once to generate <span class="inline-code">/plugins/EzNightvision/config.yml</span>.</li>
-            <li>Review and adjust the primary config keys:</li>
-          <li>Join the server and run <span class="inline-code">/nightvision</span> to verify command and effect behavior.</li>
-          </ol>
+        <section id="config"><h2>config.yml</h2>
           <div class="code-block">
-            <div class="code-head">config.yml keys</div>
-            <pre><code>storage.file
-effect.ambient
-effect.particles
-effect.icon
-effect.reapply-delay-ticks
-messages.*</code></pre>
+            <div class="code-head">/plugins/EzNightvision/config.yml</div>
+            <pre><code>debug: false
+storage:
+  file: data/eznightvision.db
+effect:
+  ambient: false
+  particles: false
+  icon: false
+  reapply-delay-ticks: 2
+placeholders:
+  enabled-format: '&amp;aON'
+  disabled-format: '&amp;cOFF'
+messages:
+  prefix: '&amp;8[&amp;bEzNightvision&amp;8] &amp;r'
+  enabled-self: '&amp;aNight Vision enabled.'
+  disabled-self: '&amp;cNight Vision disabled.'
+  enabled-other: '&amp;aEnabled Night Vision for &amp;f%player%&amp;a.'
+  disabled-other: '&amp;cDisabled Night Vision for &amp;f%player%&amp;c.'
+  target-enabled: '&amp;aNight Vision has been enabled by staff.'
+  target-disabled: '&amp;cNight Vision has been disabled by staff.'
+  no-permission: '&amp;cYou do not have permission to do that.'
+  player-not-found: '&amp;cPlayer not found.'
+  console-must-specify-player: '&amp;cConsole must specify a player.'
+  already-enabled: '&amp;eNight Vision is already enabled.'
+  already-disabled: '&amp;eNight Vision is already disabled.'
+  usage: '&amp;eUsage: /nightvision [on|off|reload] [player]'
+  reload-success: '&amp;aEzNightvision configuration reloaded.'
+  reload-failed: '&amp;cFailed to reload the EzNightvision configuration. Check console for details.'</code></pre>
           </div>
-          <p><strong>Warning:</strong> Do not use Bukkit <span class="inline-code">/reload</span> for plugin installation or jar upgrades. Use a full restart.</p>
-          <p><strong>Tip:</strong> Use <span class="inline-code">/nightvision reload</span> after editing <span class="inline-code">config.yml</span> message/effect keys to apply changes without replacing the jar.</p>
+        </section>
+
+        <section id="key-reference"><h2>Key Reference</h2>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Key</th><th>Type</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td><span class="inline-code">debug</span></td><td>boolean</td><td>Enables verbose restore/effect debug logging.</td></tr>
+              <tr><td><span class="inline-code">storage.file</span></td><td>string</td><td>SQLite path used to persist player state.</td></tr>
+              <tr><td><span class="inline-code">effect.ambient</span></td><td>boolean</td><td>Sets ambient potion flag.</td></tr>
+              <tr><td><span class="inline-code">effect.particles</span></td><td>boolean</td><td>Shows/hides potion particles.</td></tr>
+              <tr><td><span class="inline-code">effect.icon</span></td><td>boolean</td><td>Shows/hides potion icon.</td></tr>
+              <tr><td><span class="inline-code">effect.reapply-delay-ticks</span></td><td>long</td><td>Delay before reapplying Night Vision after trigger events.</td></tr>
+              <tr><td><span class="inline-code">placeholders.enabled-format</span></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when enabled.</td></tr>
+              <tr><td><span class="inline-code">placeholders.disabled-format</span></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when disabled.</td></tr>
+              <tr><td><span class="inline-code">messages.*</span></td><td>string</td><td>User-facing command and status messages.</td></tr>
+            </tbody>
+          </table></div>
         </section>
 
         <section id="updating"><h2>Updating</h2>
@@ -223,7 +241,7 @@ messages.*</code></pre>
     troubleshooting: {
       title: 'Troubleshooting · EzNightvision Docs',
       topbarTitle: 'Troubleshooting',
-      meta: ['Usage', 'Support'],
+      meta: ['More', 'Support'],
       content: `
         <h1>Troubleshooting</h1>
 
@@ -270,70 +288,10 @@ messages.*</code></pre>
       `
     },
 
-    'persistent-night-vision': {
-      title: 'Persistent Night Vision · EzNightvision Docs',
-      topbarTitle: 'Persistent Night Vision',
-      meta: ['Features', 'Core Behavior'],
-      content: `
-        <h1>Persistent Night Vision</h1>
-
-        <section id="requirements"><h2>Requirements</h2>
-          <ul>
-            <li>Player has enabled state through <span class="inline-code">/nightvision</span> or <span class="inline-code">/nightvision on</span>.</li>
-            <li>Plugin can write to configured SQLite path (<span class="inline-code">storage.file</span>).</li>
-          </ul>
-        </section>
-
-        <section id="feature-overview"><h2>What the Feature Does</h2>
-          <p>This feature stores each player's Night Vision toggle state and keeps the potion effect applied when gameplay events remove it.</p>
-        </section>
-
-        <section id="runtime-conditions"><h2>Runtime Conditions</h2>
-          <p>Night Vision is (re)applied when all conditions are true:</p>
-          <ul>
-            <li>Stored state in SQLite/cache is <span class="inline-code">true</span>.</li>
-            <li>Player is online.</li>
-            <li>Event triggers one of these restore paths: player joins, player respawns, player drinks milk, player uses a totem (resurrection event), or Night Vision effect is removed/cleared by game mechanics.</li>
-          </ul>
-        </section>
-
-        <section id="config-keys"><h2>Exact Config Keys</h2>
-          <div class="code-block">
-            <div class="code-head">config.yml keys</div>
-            <pre><code>storage.file
-effect.ambient
-effect.particles
-effect.icon
-effect.reapply-delay-ticks
-debug</code></pre>
-          </div>
-          <div class="table-wrap"><table>
-            <thead><tr><th>Key</th><th>Type</th><th>Effect</th></tr></thead>
-            <tbody>
-              <tr><td><span class="inline-code">storage.file</span></td><td>string</td><td>SQLite DB location for player state.</td></tr>
-              <tr><td><span class="inline-code">effect.ambient</span></td><td>boolean</td><td>Sets ambient flag on potion effect.</td></tr>
-              <tr><td><span class="inline-code">effect.particles</span></td><td>boolean</td><td>Enables/disables particles on potion effect.</td></tr>
-              <tr><td><span class="inline-code">effect.icon</span></td><td>boolean</td><td>Enables/disables effect icon.</td></tr>
-              <tr><td><span class="inline-code">effect.reapply-delay-ticks</span></td><td>long</td><td>Delay before reapplying after restore-trigger events. Minimum effective value is 1 tick.</td></tr>
-              <tr><td><span class="inline-code">debug</span></td><td>boolean</td><td>Enables debug logs around restore checks and effect removals.</td></tr>
-            </tbody>
-          </table></div>
-        </section>
-
-        <section id="reload-behavior"><h2>Reload / Update Behavior</h2>
-          <ul>
-            <li><span class="inline-code">/nightvision reload</span> calls config reload and refreshes effect state for all online players.</li>
-            <li>Updated <span class="inline-code">effect.*</span> values apply on the next effect update cycle.</li>
-            <li>Stored player state is not reset during reload.</li>
-          </ul>
-        </section>
-      `
-    },
-
     'placeholderapi-integration': {
       title: 'PlaceholderAPI Integration · EzNightvision Docs',
       topbarTitle: 'PlaceholderAPI Integration',
-      meta: ['Features', 'Integrations'],
+      meta: ['Usage', 'Integrations'],
       content: `
         <h1>PlaceholderAPI Integration</h1>
 
