@@ -1,4 +1,4 @@
-# PlaceholderAPI Integration
+# Placeholders
 
 ## Requirements
 
@@ -7,29 +7,28 @@
 
 ## What the Feature Does
 
-When PlaceholderAPI is present, EzNightvision registers an expansion and exposes player Night Vision state placeholders.
+When PlaceholderAPI is present, EzNightvision registers an expansion and exposes Night Vision toggle placeholders for player-aware contexts.
 
 ## Exact Config Keys
 
 | Key | Type | Effect |
 |-----|------|--------|
-| `<pre><code>placeholders.enabled-format</code></pre>` | string | Output for `%eznightvision_toggle_formatted%` when enabled. |
-| `<pre><code>placeholders.disabled-format</code></pre>` | string | Output for `%eznightvision_toggle_formatted%` when disabled. |
+| `<pre><code>placeholders.enabled-format</code></pre>` | string | Output for the formatted toggle placeholder when enabled. |
+| `<pre><code>placeholders.disabled-format</code></pre>` | string | Output for the formatted toggle placeholder when disabled. |
 
 ## Runtime Conditions
 
 Placeholder expansion registers only when PlaceholderAPI is enabled during plugin startup.
 
-Available placeholders:
+Available placeholder keys:
 
-- `%eznightvision_toggle%` → `true` or `false`
-- `%eznightvision_toggle_formatted%` → formatted value from config keys above
+- `toggle` → `true` or `false`
+- `toggle_formatted` → formatted value from config keys above
 
 Behavior details:
 
-- Placeholder identifier is `eznightvision`.
 - Placeholder state reads from stored toggle state (cache/SQLite-backed).
-- If player context is missing in a PlaceholderAPI request, `%eznightvision_toggle%` returns `false`.
+- If player context is missing in a placeholder request, `toggle` resolves to `false`.
 
 ## Reload / Update Behavior
 

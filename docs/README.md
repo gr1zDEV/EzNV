@@ -8,7 +8,7 @@ EzNightvision is a Paper/Folia plugin that lets players and staff persistently t
 - Toggle Night Vision for another online player with `/nightvision <on|off> <player>`
 - Persists player toggle state in SQLite (`storage.file`)
 - Reapplies effect after join, respawn, milk, totem use, and potion-effect removal events
-- Optional PlaceholderAPI expansion with `%eznightvision_toggle%` and `%eznightvision_toggle_formatted%`
+- Optional PlaceholderAPI expansion with toggle placeholders and configurable formatted output (`placeholders.enabled-format` / `placeholders.disabled-format`)
 - Runtime config reload with `/nightvision reload`
 
 ## Downloads
