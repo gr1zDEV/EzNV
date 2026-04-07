@@ -17,48 +17,34 @@ Reapply triggers include:
 ## config.yml
 
 ```yaml
-debug: false
+debug: false # Enables verbose restore/effect debug logging.
 storage:
-  file: data/eznightvision.db
+  file: data/eznightvision.db # SQLite path used to persist player toggle state.
 effect:
-  ambient: false
-  particles: false
-  icon: false
-  reapply-delay-ticks: 2
+  ambient: false # Sets the ambient potion flag.
+  particles: false # Shows or hides Night Vision particles.
+  icon: false # Shows or hides the Night Vision icon.
+  reapply-delay-ticks: 2 # Delay before reapplying Night Vision after trigger events.
 placeholders:
-  enabled-format: '&aON'
-  disabled-format: '&cOFF'
+  enabled-format: '&aON' # Value used for %eznightvision_toggle_formatted% when enabled.
+  disabled-format: '&cOFF' # Value used for %eznightvision_toggle_formatted% when disabled.
 messages:
-  prefix: '&8[&bEzNightvision&8] &r'
-  enabled-self: '&aNight Vision enabled.'
-  disabled-self: '&cNight Vision disabled.'
-  enabled-other: '&aEnabled Night Vision for &f%player%&a.'
-  disabled-other: '&cDisabled Night Vision for &f%player%&c.'
-  target-enabled: '&aNight Vision has been enabled by staff.'
-  target-disabled: '&cNight Vision has been disabled by staff.'
-  no-permission: '&cYou do not have permission to do that.'
-  player-not-found: '&cPlayer not found.'
-  console-must-specify-player: '&cConsole must specify a player.'
-  already-enabled: '&eNight Vision is already enabled.'
-  already-disabled: '&eNight Vision is already disabled.'
-  usage: '&eUsage: /nightvision [on|off|reload] [player]'
-  reload-success: '&aEzNightvision configuration reloaded.'
-  reload-failed: '&cFailed to reload the EzNightvision configuration. Check console for details.'
+  prefix: '&8[&bEzNightvision&8] &r' # Prefix prepended to plugin chat messages.
+  enabled-self: '&aNight Vision enabled.' # Sent when a player enables Night Vision for themself.
+  disabled-self: '&cNight Vision disabled.' # Sent when a player disables Night Vision for themself.
+  enabled-other: '&aEnabled Night Vision for &f%player%&a.' # Sent to staff after enabling another player.
+  disabled-other: '&cDisabled Night Vision for &f%player%&c.' # Sent to staff after disabling another player.
+  target-enabled: '&aNight Vision has been enabled by staff.' # Sent to the target player when staff enables it.
+  target-disabled: '&cNight Vision has been disabled by staff.' # Sent to the target player when staff disables it.
+  no-permission: '&cYou do not have permission to do that.' # Sent when command permission checks fail.
+  player-not-found: '&cPlayer not found.' # Sent when a target player name cannot be resolved.
+  console-must-specify-player: '&cConsole must specify a player.' # Sent when console omits a required target player.
+  already-enabled: '&eNight Vision is already enabled.' # Sent when enabling while already enabled.
+  already-disabled: '&eNight Vision is already disabled.' # Sent when disabling while already disabled.
+  usage: '&eUsage: /nightvision [on|off|reload] [player]' # Command usage help text.
+  reload-success: '&aEzNightvision configuration reloaded.' # Sent after a successful /nightvision reload.
+  reload-failed: '&cFailed to reload the EzNightvision configuration. Check console for details.' # Sent after a failed /nightvision reload.
 ```
-
-## Key Reference
-
-| Key | Type | Purpose |
-|---|---|---|
-| `debug` | boolean | Enables verbose restore/effect debug logging. |
-| `<pre><code>storage.file</code></pre>` | string | SQLite path used to persist player state. |
-| `<pre><code>effect.ambient</code></pre>` | boolean | Sets ambient potion flag. |
-| `<pre><code>effect.particles</code></pre>` | boolean | Shows/hides potion particles. |
-| `<pre><code>effect.icon</code></pre>` | boolean | Shows/hides potion icon. |
-| `<pre><code>effect.reapply-delay-ticks</code></pre>` | long | Delay before reapplying Night Vision after trigger events. |
-| `<pre><code>placeholders.enabled-format</code></pre>` | string | Value used for `%eznightvision_toggle_formatted%` when enabled. |
-| `<pre><code>placeholders.disabled-format</code></pre>` | string | Value used for `%eznightvision_toggle_formatted%` when disabled. |
-| `<pre><code>messages.*</code></pre>` | string | User-facing command and status messages. |
 
 ## Reload Behavior
 
