@@ -2,6 +2,7 @@
 
 EzNightvision is a lightweight Paper/Folia plugin that lets players toggle permanent Night Vision and keeps that preference saved in SQLite so it survives reconnects and restarts.
 
+https://gr1zdev.github.io/EzNV/
 ## Features
 
 - Toggle Night Vision for yourself with a simple command.
