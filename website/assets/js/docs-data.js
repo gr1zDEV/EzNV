@@ -42,7 +42,7 @@ window.DOCS_DATA = {
           <ul>
             <li>Toggle Night Vision on yourself with <span class="inline-code">/nightvision</span>, <span class="inline-code">/nightvision on</span>, or <span class="inline-code">/nightvision off</span></li>
             <li>Toggle Night Vision for another online player with <span class="inline-code">/nightvision &lt;on|off&gt; &lt;player&gt;</span></li>
-            <li>Persists player toggle state in SQLite (<span class="inline-code">storage.file</span>)</li>
+            <li>Persists player toggle state in SQLite (<span class="inline-code config-key">storage.file</span>)</li>
             <li>Reapplies effect after join, respawn, milk, totem use, and potion-effect removal events</li>
             <li>Optional PlaceholderAPI expansion with <span class="inline-code">%eznightvision_toggle%</span> and <span class="inline-code">%eznightvision_toggle_formatted%</span></li>
             <li>Runtime config reload with <span class="inline-code">/nightvision reload</span></li>
@@ -123,15 +123,15 @@ messages:
           <div class="table-wrap"><table>
             <thead><tr><th>Key</th><th>Type</th><th>Purpose</th></tr></thead>
             <tbody>
-              <tr><td><span class="inline-code">debug</span></td><td>boolean</td><td>Enables verbose restore/effect debug logging.</td></tr>
-              <tr><td><span class="inline-code">storage.file</span></td><td>string</td><td>SQLite path used to persist player state.</td></tr>
-              <tr><td><span class="inline-code">effect.ambient</span></td><td>boolean</td><td>Sets ambient potion flag.</td></tr>
-              <tr><td><span class="inline-code">effect.particles</span></td><td>boolean</td><td>Shows/hides potion particles.</td></tr>
-              <tr><td><span class="inline-code">effect.icon</span></td><td>boolean</td><td>Shows/hides potion icon.</td></tr>
-              <tr><td><span class="inline-code">effect.reapply-delay-ticks</span></td><td>long</td><td>Delay before reapplying Night Vision after trigger events.</td></tr>
-              <tr><td><span class="inline-code">placeholders.enabled-format</span></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when enabled.</td></tr>
-              <tr><td><span class="inline-code">placeholders.disabled-format</span></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when disabled.</td></tr>
-              <tr><td><span class="inline-code">messages.*</span></td><td>string</td><td>User-facing command and status messages.</td></tr>
+              <tr><td><span class="inline-code config-key">debug</span></td><td>boolean</td><td>Enables verbose restore/effect debug logging.</td></tr>
+              <tr><td><span class="inline-code config-key">storage.file</span></td><td>string</td><td>SQLite path used to persist player state.</td></tr>
+              <tr><td><span class="inline-code config-key">effect.ambient</span></td><td>boolean</td><td>Sets ambient potion flag.</td></tr>
+              <tr><td><span class="inline-code config-key">effect.particles</span></td><td>boolean</td><td>Shows/hides potion particles.</td></tr>
+              <tr><td><span class="inline-code config-key">effect.icon</span></td><td>boolean</td><td>Shows/hides potion icon.</td></tr>
+              <tr><td><span class="inline-code config-key">effect.reapply-delay-ticks</span></td><td>long</td><td>Delay before reapplying Night Vision after trigger events.</td></tr>
+              <tr><td><span class="inline-code config-key">placeholders.enabled-format</span></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when enabled.</td></tr>
+              <tr><td><span class="inline-code config-key">placeholders.disabled-format</span></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when disabled.</td></tr>
+              <tr><td><span class="inline-code config-key">messages.*</span></td><td>string</td><td>User-facing command and status messages.</td></tr>
             </tbody>
           </table></div>
         </section>
@@ -269,7 +269,7 @@ messages:
               <tr><td><span class="inline-code">/nightvision</span> returns no-permission message</td><td>Missing <span class="inline-code">eznightvision.use</span></td><td>Grant <span class="inline-code">eznightvision.use</span> and retest.</td></tr>
               <tr><td><span class="inline-code">/nightvision on &lt;player&gt;</span> denied</td><td>Missing <span class="inline-code">eznightvision.admin</span></td><td>Grant <span class="inline-code">eznightvision.admin</span> to the sender.</td></tr>
               <tr><td><span class="inline-code">Player not found</span></td><td>Target is offline or name mismatch</td><td>Use exact online name and retry.</td></tr>
-              <tr><td>Night Vision disappears after milk/respawn</td><td>Reapply delay or conflicting plugin behavior</td><td>Check <span class="inline-code">effect.reapply-delay-ticks</span>; raise slightly if needed.</td></tr>
+              <tr><td>Night Vision disappears after milk/respawn</td><td>Reapply delay or conflicting plugin behavior</td><td>Check <span class="inline-code config-key">effect.reapply-delay-ticks</span>; raise slightly if needed.</td></tr>
               <tr><td>Placeholder text shows raw <span class="inline-code">%eznightvision_*%</span></td><td>PlaceholderAPI missing or not loaded</td><td>Install/enable PlaceholderAPI and restart server.</td></tr>
               <tr><td>Reload fails message appears</td><td>Invalid config value or YAML formatting issue</td><td>Fix <span class="inline-code">config.yml</span> syntax and run <span class="inline-code">/nightvision reload</span> again.</td></tr>
             </tbody>
@@ -278,7 +278,7 @@ messages:
 
         <section id="practical-notes"><h2>Practical Notes</h2>
           <ul>
-            <li>SQLite state lives at <span class="inline-code">storage.file</span> and is authoritative for toggled status.</li>
+            <li>SQLite state lives at <span class="inline-code config-key">storage.file</span> and is authoritative for toggled status.</li>
             <li><span class="inline-code">debug: true</span> adds internal effect reapply logs to the console.</li>
             <li>The plugin reapplies Night Vision when the effect is removed while stored state is enabled.</li>
           </ul>
@@ -310,8 +310,8 @@ messages:
           <div class="table-wrap"><table>
             <thead><tr><th>Key</th><th>Type</th><th>Effect</th></tr></thead>
             <tbody>
-              <tr><td><span class="inline-code">placeholders.enabled-format</span></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when enabled.</td></tr>
-              <tr><td><span class="inline-code">placeholders.disabled-format</span></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when disabled.</td></tr>
+              <tr><td><span class="inline-code config-key">placeholders.enabled-format</span></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when enabled.</td></tr>
+              <tr><td><span class="inline-code config-key">placeholders.disabled-format</span></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when disabled.</td></tr>
             </tbody>
           </table></div>
         </section>
@@ -350,8 +350,8 @@ messages:
 
         <section id="main-command"><h2>What is the main command and alias?</h2><p>Main command is <span class="inline-code">/nightvision</span> with alias <span class="inline-code">/nv</span>.</p></section>
         <section id="console-toggle"><h2>Can console toggle itself?</h2><p>No. Console must specify a target player for <span class="inline-code">on</span>/<span class="inline-code">off</span> and can run <span class="inline-code">/nightvision reload</span>.</p></section>
-        <section id="state-persistence"><h2>Does the plugin remember toggles after relog/restart?</h2><p>Yes, state is persisted in SQLite at <span class="inline-code">storage.file</span>.</p></section>
-        <section id="reapply-delay"><h2>Why does a player lose Night Vision briefly after respawn or milk?</h2><p>Reapply is delayed by <span class="inline-code">effect.reapply-delay-ticks</span> (minimum effective value is 1 tick).</p></section>
+        <section id="state-persistence"><h2>Does the plugin remember toggles after relog/restart?</h2><p>Yes, state is persisted in SQLite at <span class="inline-code config-key">storage.file</span>.</p></section>
+        <section id="reapply-delay"><h2>Why does a player lose Night Vision briefly after respawn or milk?</h2><p>Reapply is delayed by <span class="inline-code config-key">effect.reapply-delay-ticks</span> (minimum effective value is 1 tick).</p></section>
         <section id="staff-permission"><h2>Which permission is needed for staff targeting and reload?</h2><p><span class="inline-code">eznightvision.admin</span>.</p></section>
         <section id="placeholder-availability"><h2>Are PlaceholderAPI placeholders always available?</h2><p>No. They are only available when PlaceholderAPI is installed and enabled.</p></section>
         <section id="reload-safety"><h2>Is <span class="inline-code">/reload</span> safe for this plugin?</h2><p>Prefer full restarts for plugin updates. Use <span class="inline-code">/nightvision reload</span> for config reload only.</p></section>
@@ -372,7 +372,7 @@ messages:
             <li>Initial EzNightvision release for Paper/Folia</li>
             <li><span class="inline-code">/nightvision</span> and <span class="inline-code">/nv</span> command support</li>
             <li>Staff controls: <span class="inline-code">/nightvision &lt;on|off&gt; &lt;player&gt;</span> and <span class="inline-code">/nightvision reload</span></li>
-            <li>SQLite-backed persisted toggle state (<span class="inline-code">storage.file</span>)</li>
+            <li>SQLite-backed persisted toggle state (<span class="inline-code config-key">storage.file</span>)</li>
             <li>Auto-reapply after join, respawn, milk, totem, and effect-removal events</li>
             <li>Optional PlaceholderAPI placeholders: <span class="inline-code">%eznightvision_toggle%</span> and <span class="inline-code">%eznightvision_toggle_formatted%</span></li>
           </ul>
