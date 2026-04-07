@@ -6,7 +6,7 @@
 - [Usage](usage/commands.md)
   - [Commands](usage/commands.md)
   - [Permissions](usage/permissions.md)
-  - [PlaceholderAPI Integration](usage/placeholderapi-integration.md)
+  - [Placeholders](usage/placeholderapi-integration.md)
 - [More](faq.md)
   - [Troubleshooting](usage/troubleshooting.md)
   - [FAQ](faq.md)

@@ -17,7 +17,7 @@ window.DOCS_DATA = {
       pages: [
         { id: 'commands', label: 'Commands' },
         { id: 'permissions', label: 'Permissions' },
-        { id: 'placeholderapi-integration', label: 'PlaceholderAPI Integration' }
+        { id: 'placeholderapi-integration', label: 'Placeholders' }
       ]
     },
     {
@@ -44,7 +44,7 @@ window.DOCS_DATA = {
             <li>Toggle Night Vision for another online player with <span class="inline-code">/nightvision &lt;on|off&gt; &lt;player&gt;</span></li>
             <li>Persists player toggle state in SQLite (<pre><code>storage.file</code></pre>)</li>
             <li>Reapplies effect after join, respawn, milk, totem use, and potion-effect removal events</li>
-            <li>Optional PlaceholderAPI expansion with <span class="inline-code">%eznightvision_toggle%</span> and <span class="inline-code">%eznightvision_toggle_formatted%</span></li>
+            <li>Optional PlaceholderAPI expansion with toggle placeholders and configurable formatted output (<pre><code>placeholders.enabled-format</code></pre> / <pre><code>placeholders.disabled-format</code></pre>)</li>
             <li>Runtime config reload with <span class="inline-code">/nightvision reload</span></li>
           </ul>
         </section>
@@ -272,11 +272,11 @@ messages:
     },
 
     'placeholderapi-integration': {
-      title: 'PlaceholderAPI Integration · EzNightvision Docs',
-      topbarTitle: 'PlaceholderAPI Integration',
+      title: 'Placeholders · EzNightvision Docs',
+      topbarTitle: 'Placeholders',
       meta: ['Usage', 'Integrations'],
       content: `
-        <h1>PlaceholderAPI Integration</h1>
+        <h1>Placeholders</h1>
 
         <section id="requirements"><h2>Requirements</h2>
           <ul>
@@ -286,31 +286,30 @@ messages:
         </section>
 
         <section id="feature-overview"><h2>What the Feature Does</h2>
-          <p>When PlaceholderAPI is present, EzNightvision registers an expansion and exposes player Night Vision state placeholders.</p>
+          <p>When PlaceholderAPI is present, EzNightvision registers an expansion and exposes Night Vision toggle placeholders for player-aware contexts.</p>
         </section>
 
         <section id="config-keys"><h2>Exact Config Keys</h2>
           <div class="table-wrap"><table>
             <thead><tr><th>Key</th><th>Type</th><th>Effect</th></tr></thead>
             <tbody>
-              <tr><td><pre><code>placeholders.enabled-format</code></pre></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when enabled.</td></tr>
-              <tr><td><pre><code>placeholders.disabled-format</code></pre></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when disabled.</td></tr>
+              <tr><td><pre><code>placeholders.enabled-format</code></pre></td><td>string</td><td>Output for the formatted toggle placeholder when enabled.</td></tr>
+              <tr><td><pre><code>placeholders.disabled-format</code></pre></td><td>string</td><td>Output for the formatted toggle placeholder when disabled.</td></tr>
             </tbody>
           </table></div>
         </section>
 
         <section id="runtime-conditions"><h2>Runtime Conditions</h2>
           <p>Placeholder expansion registers only when PlaceholderAPI is enabled during plugin startup.</p>
-          <p>Available placeholders:</p>
+          <p>Available placeholder keys:</p>
           <ul>
-            <li><span class="inline-code">%eznightvision_toggle%</span> → <span class="inline-code">true</span> or <span class="inline-code">false</span></li>
-            <li><span class="inline-code">%eznightvision_toggle_formatted%</span> → formatted value from config keys above</li>
+            <li><span class="inline-code">toggle</span> → <span class="inline-code">true</span> or <span class="inline-code">false</span></li>
+            <li><span class="inline-code">toggle_formatted</span> → formatted value from config keys above</li>
           </ul>
           <p>Behavior details:</p>
           <ul>
-            <li>Placeholder identifier is <span class="inline-code">eznightvision</span>.</li>
             <li>Placeholder state reads from stored toggle state (cache/SQLite-backed).</li>
-            <li>If player context is missing in a PlaceholderAPI request, <span class="inline-code">%eznightvision_toggle%</span> returns <span class="inline-code">false</span>.</li>
+            <li>If player context is missing in a placeholder request, <span class="inline-code">toggle</span> resolves to <span class="inline-code">false</span>.</li>
           </ul>
         </section>
 
