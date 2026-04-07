@@ -73,8 +73,12 @@ If PlaceholderAPI is installed, EzNightvision registers the `eznightvision` expa
 
 The formatted placeholder uses these config values:
 
-- `placeholders.enabled-format`
-- `placeholders.disabled-format`
+- ```
+  placeholders.enabled-format
+  ```
+- ```
+  placeholders.disabled-format
+  ```
 
 Default output:
 
