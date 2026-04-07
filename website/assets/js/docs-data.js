@@ -89,51 +89,34 @@ window.DOCS_DATA = {
         <section id="config"><h2>config.yml</h2>
           <div class="code-block">
             <div class="code-head">/plugins/EzNightvision/config.yml</div>
-            <pre><code>debug: false
+            <pre><code>debug: false # Enables verbose restore/effect debug logging.
 storage:
-  file: data/eznightvision.db
+  file: data/eznightvision.db # SQLite path used to persist player toggle state.
 effect:
-  ambient: false
-  particles: false
-  icon: false
-  reapply-delay-ticks: 2
+  ambient: false # Sets the ambient potion flag.
+  particles: false # Shows or hides Night Vision particles.
+  icon: false # Shows or hides the Night Vision icon.
+  reapply-delay-ticks: 2 # Delay before reapplying Night Vision after trigger events.
 placeholders:
-  enabled-format: '&amp;aON'
-  disabled-format: '&amp;cOFF'
+  enabled-format: '&amp;aON' # Value used for %eznightvision_toggle_formatted% when enabled.
+  disabled-format: '&amp;cOFF' # Value used for %eznightvision_toggle_formatted% when disabled.
 messages:
-  prefix: '&amp;8[&amp;bEzNightvision&amp;8] &amp;r'
-  enabled-self: '&amp;aNight Vision enabled.'
-  disabled-self: '&amp;cNight Vision disabled.'
-  enabled-other: '&amp;aEnabled Night Vision for &amp;f%player%&amp;a.'
-  disabled-other: '&amp;cDisabled Night Vision for &amp;f%player%&amp;c.'
-  target-enabled: '&amp;aNight Vision has been enabled by staff.'
-  target-disabled: '&amp;cNight Vision has been disabled by staff.'
-  no-permission: '&amp;cYou do not have permission to do that.'
-  player-not-found: '&amp;cPlayer not found.'
-  console-must-specify-player: '&amp;cConsole must specify a player.'
-  already-enabled: '&amp;eNight Vision is already enabled.'
-  already-disabled: '&amp;eNight Vision is already disabled.'
-  usage: '&amp;eUsage: /nightvision [on|off|reload] [player]'
-  reload-success: '&amp;aEzNightvision configuration reloaded.'
-  reload-failed: '&amp;cFailed to reload the EzNightvision configuration. Check console for details.'</code></pre>
+  prefix: '&amp;8[&amp;bEzNightvision&amp;8] &amp;r' # Prefix prepended to plugin chat messages.
+  enabled-self: '&amp;aNight Vision enabled.' # Sent when a player enables Night Vision for themself.
+  disabled-self: '&amp;cNight Vision disabled.' # Sent when a player disables Night Vision for themself.
+  enabled-other: '&amp;aEnabled Night Vision for &amp;f%player%&amp;a.' # Sent to staff after enabling another player.
+  disabled-other: '&amp;cDisabled Night Vision for &amp;f%player%&amp;c.' # Sent to staff after disabling another player.
+  target-enabled: '&amp;aNight Vision has been enabled by staff.' # Sent to the target player when staff enables it.
+  target-disabled: '&amp;cNight Vision has been disabled by staff.' # Sent to the target player when staff disables it.
+  no-permission: '&amp;cYou do not have permission to do that.' # Sent when command permission checks fail.
+  player-not-found: '&amp;cPlayer not found.' # Sent when a target player name cannot be resolved.
+  console-must-specify-player: '&amp;cConsole must specify a player.' # Sent when console omits a required target player.
+  already-enabled: '&amp;eNight Vision is already enabled.' # Sent when enabling while already enabled.
+  already-disabled: '&amp;eNight Vision is already disabled.' # Sent when disabling while already disabled.
+  usage: '&amp;eUsage: /nightvision [on|off|reload] [player]' # Command usage help text.
+  reload-success: '&amp;aEzNightvision configuration reloaded.' # Sent after a successful /nightvision reload.
+  reload-failed: '&amp;cFailed to reload the EzNightvision configuration. Check console for details.' # Sent after a failed /nightvision reload.</code></pre>
           </div>
-        </section>
-
-        <section id="key-reference"><h2>Key Reference</h2>
-          <div class="table-wrap"><table>
-            <thead><tr><th>Key</th><th>Type</th><th>Purpose</th></tr></thead>
-            <tbody>
-              <tr><td><span class="inline-code config-key">debug</span></td><td>boolean</td><td>Enables verbose restore/effect debug logging.</td></tr>
-              <tr><td><pre><code>storage.file</code></pre></td><td>string</td><td>SQLite path used to persist player state.</td></tr>
-              <tr><td><pre><code>effect.ambient</code></pre></td><td>boolean</td><td>Sets ambient potion flag.</td></tr>
-              <tr><td><pre><code>effect.particles</code></pre></td><td>boolean</td><td>Shows/hides potion particles.</td></tr>
-              <tr><td><pre><code>effect.icon</code></pre></td><td>boolean</td><td>Shows/hides potion icon.</td></tr>
-              <tr><td><pre><code>effect.reapply-delay-ticks</code></pre></td><td>long</td><td>Delay before reapplying Night Vision after trigger events.</td></tr>
-              <tr><td><pre><code>placeholders.enabled-format</code></pre></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when enabled.</td></tr>
-              <tr><td><pre><code>placeholders.disabled-format</code></pre></td><td>string</td><td>Output for <span class="inline-code">%eznightvision_toggle_formatted%</span> when disabled.</td></tr>
-              <tr><td><pre><code>messages.*</code></pre></td><td>string</td><td>User-facing command and status messages.</td></tr>
-            </tbody>
-          </table></div>
         </section>
 
         <section id="updating"><h2>Updating</h2>
