@@ -13,8 +13,8 @@ When PlaceholderAPI is present, EzNightvision registers an expansion and exposes
 
 | Key | Type | Effect |
 |-----|------|--------|
-| `placeholders.enabled-format` | string | Output for `%eznightvision_toggle_formatted%` when enabled. |
-| `placeholders.disabled-format` | string | Output for `%eznightvision_toggle_formatted%` when disabled. |
+| `<pre><code>placeholders.enabled-format</code></pre>` | string | Output for `%eznightvision_toggle_formatted%` when enabled. |
+| `<pre><code>placeholders.disabled-format</code></pre>` | string | Output for `%eznightvision_toggle_formatted%` when disabled. |
 
 ## Runtime Conditions
 

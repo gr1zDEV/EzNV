@@ -51,14 +51,14 @@ messages:
 | Key | Type | Purpose |
 |---|---|---|
 | `debug` | boolean | Enables verbose restore/effect debug logging. |
-| `storage.file` | string | SQLite path used to persist player state. |
-| `effect.ambient` | boolean | Sets ambient potion flag. |
-| `effect.particles` | boolean | Shows/hides potion particles. |
-| `effect.icon` | boolean | Shows/hides potion icon. |
-| `effect.reapply-delay-ticks` | long | Delay before reapplying Night Vision after trigger events. |
-| `placeholders.enabled-format` | string | Value used for `%eznightvision_toggle_formatted%` when enabled. |
-| `placeholders.disabled-format` | string | Value used for `%eznightvision_toggle_formatted%` when disabled. |
-| `messages.*` | string | User-facing command and status messages. |
+| `<pre><code>storage.file</code></pre>` | string | SQLite path used to persist player state. |
+| `<pre><code>effect.ambient</code></pre>` | boolean | Sets ambient potion flag. |
+| `<pre><code>effect.particles</code></pre>` | boolean | Shows/hides potion particles. |
+| `<pre><code>effect.icon</code></pre>` | boolean | Shows/hides potion icon. |
+| `<pre><code>effect.reapply-delay-ticks</code></pre>` | long | Delay before reapplying Night Vision after trigger events. |
+| `<pre><code>placeholders.enabled-format</code></pre>` | string | Value used for `%eznightvision_toggle_formatted%` when enabled. |
+| `<pre><code>placeholders.disabled-format</code></pre>` | string | Value used for `%eznightvision_toggle_formatted%` when disabled. |
+| `<pre><code>messages.*</code></pre>` | string | User-facing command and status messages. |
 
 ## Reload Behavior
 
