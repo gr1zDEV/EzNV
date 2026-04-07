@@ -212,6 +212,15 @@ ol, ul { margin-top: 16px; padding-left: 22px; }
   font-size: 14px;
 }
 
+.config-key {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: #0a0e13;
+  border-color: rgba(124, 152, 196, 0.35);
+}
+
 
 .stats-embed {
   margin-top: 16px;
